@@ -1,0 +1,7 @@
+{
+  "name": "memories-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
