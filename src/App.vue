@@ -16,3 +16,11 @@ export default defineComponent({
   }
 });
 </script>
+
+<style>
+ion-toolbar
+{
+  --background: var(--ion-color-primary);
+  --color: var(--ion-color-primary-contrast)
+}
+</style>
