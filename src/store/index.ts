@@ -1,25 +1,15 @@
 import { createStore } from 'vuex'
 import { Memory } from '../interfaces/Memory'
+import { v4 } from 'uuid'
 
 const store = createStore({
     state: {
-        memories: [
-            {
-                id: '1',
-                title: 'First day in university',
-                description: 'First day with my friends and teachers in university'
-            },
-            {
-                id: '2',
-                title: 'Coocking with my family',
-                description: 'Coocking a delicius chicken with my mother'
-            },
-            {
-                id: '3',
-                title: 'Lorem ipsum dolor sit amet 1',
-                description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium'
-            }
-        ]
+        // memoryFind: {
+        //     id: '',
+        //     title: '',
+        //     description: ''
+        // } as Memory,
+        memories: [] as Memory[],
     },
     mutations: {
         addMemory ( state, payload: Memory ) {
@@ -27,15 +17,22 @@ const store = createStore({
         },
         deleteMemory ( state, payload: string ) {
             state.memories = state.memories.filter( memory => memory.id !== payload )
-        } 
+        },
+        // memoryFilter ( state, payload: string ) {
+        //     state.memoryFind = state.memories.find( memory => memory.id === payload )
+        // } 
     },
     actions: {
         addMemory( {commit}, newMemory: Memory ) {
+            newMemory = { ...newMemory, id: v4() }
             commit('addMemory', newMemory)
         },
         deleteMemory( {commit}, id: string ) {
             commit('deleteMemory', id)
-        }
+        },
+        // memoryFilter ( {commit}, id: string ) {
+        //     commit('memoryFilter', id)
+        // }
     }
 })
 
